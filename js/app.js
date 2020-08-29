@@ -29,7 +29,7 @@ function createTodoItem(title) {
     listItem.appendChild(deleteButton);
     
     bindEvents(listItem);
-
+    
     return listItem;
 }
 
@@ -47,7 +47,9 @@ function bindEvents(todoItem) {
 function addTodoItem(event) {
     event.preventDefault();
 
-    if (addInput.value === '') return alert('Задача не введена!');
+    if (addInput.value === '') {
+        return alert('Задача не введена!')
+    };
 
     const todoItem = createTodoItem(addInput.value);
     todoList.appendChild(todoItem);
@@ -60,11 +62,26 @@ function toggleTodoItem() {
 }
 
 function editTodoItem() {
-    
+    const listItem = this.parentNode;
+    const title = listItem.querySelector('.title');
+    const editInput = listItem.querySelector('.textfield');
+    const isEditing = listItem.classList.contains('editing');
+
+    if (isEditing) {
+        title.innerText = editInput.value;
+        this.innerText = 'Изменить';
+    } else {
+        editInput.value = title.innerText;
+        this.innerText = 'Сохранить';
+    }
+
+    listItem.classList.toggle('editing');
+ 
 }
 
 function deleteTodoItem() {
-    
+    const listItem = this.parentNode;
+    todoList.removeChild(listItem);
 }
 
 const todoForm = document.getElementById('todo-form'),
