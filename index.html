@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Планировщик задач</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -14,13 +15,58 @@
 
             <div class="personal">
                 <div class="personal-avatar">
-                    <img src="img/avatar.jpg" alt="">
-                </div>
-                <div class="personal-info">
-                    <div class="personal-info-title">
-                        <h2>Степан Пищелев</h2>
+                    <div class="personal-avatar-active">
+                        <img src="img/1-man.svg" alt="">
+                        <div class="personal-edit">
+                            <button>Сменить аватар</button>
+                        </div>
+                    </div>
+                    <div class="personal-avatar-choice">
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/1-man.svg" alt="">
+                        </div>
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/2-man.svg" alt="">
+                        </div>
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/3-man.svg" alt="">
+                        </div>
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/4-man.svg" alt="">
+                        </div>
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/5-man.svg" alt="">
+                        </div>
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/1-woman.svg" alt="">
+                        </div>
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/2-woman.svg" alt="">
+                        </div>
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/3-woman.svg" alt="">
+                        </div>
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/4-woman.svg" alt="">
+                        </div>
+                        <div class="personal-avatar-choice-item">
+                            <img src="img/5-woman.svg" alt="">
+                        </div>
                     </div>
                 </div>
+
+                <div class="personal-info">
+                    <div class="personal-info-title">
+                        <h2>Аноним Анонимный</h2>
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="personal-task">
+                    <div class="personal-task-all personal-task-item personal-task-item-active">Все задачи</div>
+                    <div class="personal-task-daily personal-task-item">Задачи на день</div>
+                </div>
+
+
             </div>
 
             <div class="todo">
@@ -29,7 +75,8 @@
                         <div class="todo-header">
                             <div class="todo-header-info">
                                 <div class="todo-header-info-time">
-                                    <p><span class="todo-header-hours">11</span>:<span class="todo-header-minutes">26</span></p>
+                                    <p><span class="todo-header-hours">11</span>:<span
+                                            class="todo-header-minutes">26</span></p>
                                 </div>
                                 <div class="todo-header-info-field"></div>
                                 <div class="todo-header-info-clean">
@@ -37,23 +84,88 @@
                                     <img src="img/broom.svg" alt="">
                                 </div>
                             </div>
-                            <h1>Планировщик задач</h1>
+                            <div class="todo-header-done">
+                                <div class="todo-header-done-percent">
+                                    <p>0%</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="todo-list-wrapper">
                             <ul id="todo-list"></ul>
 
                             <ul id="todo-list-complete"></ul>
-                        </div>                        
-                        
+                        </div>
+
                         <form action="" id="todo-form">
                             <input type="text" id="add-input">
                             <div class="todo-form-button">
                                 <button id="add-button" type="submit">Добавить</button>
                                 <img src="img/plus.svg" alt="">
                             </div>
-                            
+
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal">
+            <div class="modal-dialog">
+                
+                <div class="modal-close">
+                    <img src="img/close.svg" alt="">
+                </div>
+
+                <h3>Редактировать задачу</h3>
+                <div class="modal-dialog-item modal-dialog-name">
+                    <div class="switch">
+                        <div class="switch-round"></div>
+                    </div>
+                    <p>Изменить имя</p>
+                    <div class="modal-dialog-item-more">
+                        <input type="text" value="ИМЯ">
+                    </div>
+                </div>
+                <div class="modal-dialog-item modal-dialog-date">
+                    <div class="switch">
+                        <div class="switch-round"></div>
+                    </div>
+                    <p>Установить дату выполнения</p>
+                    <div class="modal-dialog-item-more">
+                        <input type="date">
+                    </div>
+                </div>
+                <div class="modal-dialog-item modal-dialog-time">
+                    <div class="switch">
+                        <div class="switch-round"></div>
+                    </div>
+                    <p>Установить время выполнения</p>
+                    <div class="modal-dialog-item-more">
+                        <input type="time">
+                    </div>
+                </div>
+                <div class="modal-dialog-item modal-dialog-priority">
+                    <div class="switch">
+                        <div class="switch-round"></div>
+                    </div>
+                    <p>Установить приоритет</p>
+                    <div class="modal-dialog-item-more">
+                        <p class="priority-active" data-priority="low">Низкий</p>
+                        <p data-priority="normal">Средний</p>
+                        <p data-priority="high">Высокий</p>
+                    </div>
+                </div>
+                <div class="modal-dialog-item modal-dialog-repeat">
+                    <div class="switch">
+                        <div class="switch-round"></div>
+                    </div>
+                    <p>Повторяющаяся задача</p>
+                    <div class="modal-dialog-item-more">
+                        <p class="repeat-active" data-repeat="day">Ежедневно</p>
+                        <p data-repeat="week">Еженедельно</p>
+                        <p data-repeat="month">Ежемесячно</p>
+                        <p data-repeat="year">Ежегодно</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +173,7 @@
 
     </main>
 
-    <script src="js/app.js"></script>
+    <script src="js/bundle.js"></script>
 </body>
 
 </html>

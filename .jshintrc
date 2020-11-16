@@ -1,3 +1,4 @@
 {     
-    "maxerr": 10000
+    "maxerr": 10000,
+    "esversion": 6
 } 
